@@ -16,7 +16,6 @@ export const useDashboardData = () => {
     campaigns: campaignsQuery.data,
     insights: insightsQuery.data,
 
-    // 🔹 separate loading states
     campaignsLoading: campaignsQuery.isLoading,
     insightsLoading: insightsQuery.isLoading,
 

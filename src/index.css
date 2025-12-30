@@ -1,9 +1,9 @@
 :root {
   --bg: #f1f5f9;
   --card-bg: #ffffff;
-  --primary: #4f46e5;      /* Indigo */
+  --primary: #4f46e5;      
   --primary-light: #eef2ff;
-  --accent: #16a34a;       /* Green */
+  --accent: #16a34a;     
   --text-main: #0f172a;
   --text-muted: #64748b;
   --border: #e2e8f0;
@@ -27,7 +27,6 @@ h1 {
   color: var(--primary);
 }
 
-/* ---------- STATS CARDS ---------- */
 
 .stats {
   display: grid;
@@ -50,7 +49,6 @@ h1 {
   color: var(--accent);
 }
 
-/* ---------- TABLE ---------- */
 
 table {
   width: 100%;
@@ -67,14 +65,19 @@ thead {
 
 th {
   padding: 14px;
-  text-align: left;
+  text-align: left;       
   font-size: 14px;
   color: var(--text-muted);
+  font-weight: 600;
 }
-
 td {
   padding: 14px;
+  text-align: left;         
   border-bottom: 1px solid var(--border);
+}
+
+td[colspan]{
+  padding: 8px;
 }
 
 tr:hover {
@@ -82,31 +85,119 @@ tr:hover {
   cursor: pointer;
 }
 
-/* ---------- CAMPAIGN DETAILS ---------- */
 
 .campaign-details {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 16px;
   padding: 14px;
   background: #f8fafc;
   border-radius: 10px;
 }
 
+.metrics {
+  display: flex;
+  flex-wrap: wrap;              
+  gap: 12px 20px;
+}
+
 .metrics span {
-  margin-right: 18px;
+  min-width: 120px;
   font-weight: 600;
   color: var(--primary);
 }
 
-/* ---------- CHECKBOX ---------- */
 
-input[type='checkbox'] {
-  accent-color: var(--primary);
+.live-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.live-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.live-toggle input:checked + .live-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.live-toggle input:checked ~ .live-text {
+  color: var(--accent);
+}
+
+
+.campaign-error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;                 
+  box-sizing: border-box;     
+  padding: 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.campaign-error button {
+  background: transparent;
+  border: 1px solid #b91c1c;
+  color: #b91c1c;
+  padding: 6px 12px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* ---------- SKELETON LOADER ---------- */
+.campaign-error button:hover {
+  background: #fee2e2;
+}
+
+
+
+.live-flicker {
+  animation: flicker 0.3s ease-out;
+}
+
+@keyframes flicker {
+  0% {
+    background-color: #ecfdf5; 
+  }
+  100% {
+    background-color: #f8fafc; 
+  }
+}
+
+
+.campaign-skeleton {
+  background: linear-gradient(
+    90deg,
+    #e5e7eb,
+    #f3f4f6,
+    #e5e7eb
+  );
+  background-size: 200% 100%;
+  animation: skeleton 1.2s infinite;
+  border-radius: 8px;
+}
 
 .skeleton {
   background: linear-gradient(
@@ -120,6 +211,28 @@ input[type='checkbox'] {
   border-radius: 12px;
   margin-bottom: 16px;
 }
+
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-details {
+    flex-direction: column;
+  }
+
+  .metrics {
+    flex-direction: column;
+  }
+
+  .metrics span {
+    min-width: auto;
+  }
+}
+
+
+
 
 @keyframes skeleton {
   0% {
