@@ -1,0 +1,131 @@
+:root {
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --primary: #4f46e5;      /* Indigo */
+  --primary-light: #eef2ff;
+  --accent: #16a34a;       /* Green */
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+.container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+/* ---------- STATS CARDS ---------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.card:nth-child(3),
+.card:nth-child(4) {
+  color: var(--accent);
+}
+
+/* ---------- TABLE ---------- */
+
+table {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+thead {
+  background: var(--primary-light);
+}
+
+th {
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+tr:hover {
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+/* ---------- CAMPAIGN DETAILS ---------- */
+
+.campaign-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.metrics span {
+  margin-right: 18px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ---------- CHECKBOX ---------- */
+
+input[type='checkbox'] {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* ---------- SKELETON LOADER ---------- */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e5e7eb,
+    #f3f4f6,
+    #e5e7eb
+  );
+  background-size: 200% 100%;
+  animation: skeleton 1.2s infinite;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
